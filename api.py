@@ -1,3 +1,16 @@
+"""
+This is a FastAPI application implementing an API app for phrase comparison.
+
+The API app has one endpoint: top2
+
+The top2 endpoint accepts a list of phrases and returns the top 2 closest phrases.
+
+Calculating the top 2 closest phrases is done by calculating the cosine distance between
+encodings of all pairs of phrases and returning the pair with the smallest distance.
+
+Check the README.md file for more details.
+"""
+
 from fastapi import FastAPI, HTTPException
 from sentence_transformers import SentenceTransformer
 from scipy.spatial.distance import cosine
@@ -18,23 +31,25 @@ def check_phrases(phrases: list[str]) -> HTTPException:
     Returns:
         HTTPException: Exception if the input phrases are invalid.
     """
-    if type(phrases) != list:
+    if not isinstance(phrases, list):
         raise HTTPException(status_code=400, detail="Error: Not a list.")
-    
+
     if len(phrases) == 0:
         raise HTTPException(status_code=400, detail="Error: No phrases provided.")
-    
+
     if len(phrases) < 2:
-        raise HTTPException(status_code=400, detail="Error: At least two phrases required for comparison.")
-    
+        raise HTTPException(status_code=400,
+                            detail="Error: At least two phrases required for comparison.")
+
     for phrase in phrases:
-        if type(phrase) != str:
+        if not isinstance(phrase, str):
             raise HTTPException(status_code=400, detail="Error: Phrase is not a string.")
         if len(phrase) == 0:
             raise HTTPException(status_code=400, detail="Error: Phrase is empty.")
         if len(phrase) > 1000:
-            raise HTTPException(status_code=400, detail="Error: Phrase is longer than 1000 characters.")
-        
+            raise HTTPException(status_code=400,
+                                detail="Error: Phrase is longer than 1000 characters.")
+
 
 def calculate_embeddings(phrases: list[str]) -> list[list[float]]:
     """
@@ -74,9 +89,9 @@ def find_top2_closest(phrases: list[str]) -> tuple[str, str]:
     """
     embeddings = calculate_embeddings(phrases)
     num_phrases = len(phrases)
-    
+
     if num_phrases == 2:
-        return (phrases)
+        return phrases
 
     min_distance = float('inf')
     closest_pair = ()
@@ -109,8 +124,7 @@ async def top2(phrases: list[str])-> tuple[str, str]:
         check_phrases(phrases)
     except HTTPException as e:
         raise e
-    else:    
-        return find_top2_closest(phrases)
+    return find_top2_closest(phrases)
 
 if __name__ == "__main__":
     import uvicorn
