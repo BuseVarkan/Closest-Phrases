@@ -50,7 +50,7 @@ The API responds with a tuple containing the top 2 closest phrases identified du
 ## Customization
 ### 1. `api.py`
 You can customize the `api.py` according to your needs. For instance,
-1. You can choose a different pre-trained sentence embedding model from the sentence_transformers library, such as Multilingual Models (all-MiniLM-L6-v2).
+1. You can choose a different pre-trained sentence embedding model from the sentence_transformers library, such as Multilingual Models (all-MiniLM-L6-v2), BERT, or USE.
 2. You can use your custom model, assuming a custom model has been saved
 `model = SentenceTransformer('path/to/custom_model')`
 3. You can change distance calculation method, such as euclidean distance.
