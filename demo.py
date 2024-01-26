@@ -1,12 +1,16 @@
 """
 Demo Script for Testing FastAPI Checks Closest Phrases
 
-This script provides demonstration cases for testing the FastAPI API implemented in api.py.
-It includes various test cases to showcase the functionality of the API, with valid and edge cases.
+This script provides demonstration cases for testing the
+FastAPI API implemented in api.py.
+
+It includes various test cases to showcase the
+functionality of the API, with valid and edge cases.
 
 Usage:
 1. Run the FastAPI server using `python3 -m uvicorn api:app --reload`.
-2. Execute this script to send requests to the running API and display the results.
+2. Execute this script to send requests to the running API
+and display the results.
 
 Test Cases:
 1. Empty list
@@ -62,18 +66,19 @@ test_phrases.append(phrases)
 
 # Test case 8: Valid list
 phrases = ["xyzxyz", "yzx yzx", "MyTestString", "My Test Sentence",
-           'Weather is nice today', 'It is not cold at all']
+           "Weather is nice today", "It is not cold at all"]
 test_phrases.append(phrases)
 
 # Get test case number from user
 test_case_number = int(input("Enter test case number (1-8): "))
 
 # Send request to API
-response = requests.post(API_ENDPOINT, json=test_phrases[test_case_number - 1], timeout=100)
+response = requests.post(API_ENDPOINT, json=test_phrases[test_case_number - 1],
+                        timeout=100)
 
 if response.status_code == 200:
-    print("Top 2 closest phrases:", response.json())
+  print("Top 2 closest phrases:", response.json())
 
 else:
-    print("Status Code:",response.status_code)
-    print(response.json().get("detail"))
+  print("Status Code:",response.status_code)
+  print(response.json().get("detail"))
