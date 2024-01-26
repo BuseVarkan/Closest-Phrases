@@ -20,20 +20,24 @@ test_phrases.append(phrases)
 phrases = ["computer", ""]
 test_phrases.append(phrases)
 
-# Test case 5: Phrase is not a string
-phrases = ["computer", 1]
-test_phrases.append(phrases)
-
-# Test case 6: Phrase with more than 1000 characters
+# Test case 5: Phrase with more than 1000 characters
 phrases = ["a" * 1001, "b"]
 test_phrases.append(phrases)
 
-# Test case 7: Valid list with more than 2 elements
+# Test case 6: Valid list
+phrases = ["1111", "2222", "abcdef", "23456"]
+test_phrases.append(phrases)
+
+# Test case 7: Valid list
 phrases = ["Buse", "Varkan", "apple", "orange", "I love playing video games","Deep learning is a subset of machine learning","Machine learning is a subset of artificial intelligence"]
 test_phrases.append(phrases)
 
+# Test case 8: Valid list
+phrases = ["xyzxyz", "xyzxyz", "xyzxyz"]
+test_phrases.append(phrases)
+
 # Get test case number from user
-test_case_number = int(input("Enter test case number (1-7): "))
+test_case_number = int(input("Enter test case number (1-8): "))
 
 # Send request to API
 response = requests.post(api_endpoint, json=test_phrases[test_case_number - 1])

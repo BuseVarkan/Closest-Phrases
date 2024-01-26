@@ -18,7 +18,7 @@ def check_phrases(phrases: list[str]) -> HTTPException:
     Returns:
         HTTPException: Exception if the input phrases are invalid.
     """
-    if not isinstance(phrases, list):
+    if type(phrases) != list:
         raise HTTPException(status_code=400, detail="Error: Not a list.")
     
     if len(phrases) == 0:
@@ -28,7 +28,7 @@ def check_phrases(phrases: list[str]) -> HTTPException:
         raise HTTPException(status_code=400, detail="Error: At least two phrases required for comparison.")
     
     for phrase in phrases:
-        if not isinstance(phrase, str):
+        if type(phrase) != str:
             raise HTTPException(status_code=400, detail="Error: Phrase is not a string.")
         if len(phrase) == 0:
             raise HTTPException(status_code=400, detail="Error: Phrase is empty.")
