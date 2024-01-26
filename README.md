@@ -47,3 +47,18 @@ The pair of phrases with the smallest cosine distance is identified as the top c
 ### 6. Response:
 The API responds with a tuple containing the top 2 closest phrases identified during the comparison.
     
+## Customization
+### 1. `api.py`
+You can customize the `api.py` according to your needs. For instance,
+1. You can choose a different pre-trained sentence embedding model from the sentence_transformers library, such as Multilingual Models (all-MiniLM-L6-v2).
+2. You can use your custom model, assuming a custom model has been saved
+`model = SentenceTransformer('path/to/custom_model')`
+3. You can change distance calculation method, such as euclidean distance.
+4. You can customize the server configuration when running the FastAPI application using uvicorn. This includes specifying the host and port.
+### 2. `demo.py`
+Similarly, you can customize the `demo.py` according to your needs. For instance,
+1. You can modify the test cases or add new ones based on your specific scenarios or requirements.
+2. You can change the api endpoint if the FastAPI server is running on a different host or port.
+3. The timeout parameter can be adjusted based on the expected response time from the FastAPI server.
+4. The script currently prompts the user to enter a test case number. You can modify the script to choose a test case automatically or in any other way that suits your needs.
+   
