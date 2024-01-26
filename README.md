@@ -26,6 +26,8 @@ python3 demo.py
    > Status Code: 400
    > Error: At least two phrases required for comparison.
    
+ > NOTE: If `python3` command is not working for you, please try `python` instead.
+   
 ## Functionality
 ### 1. API Endpoint: /top2
 The API provides a single endpoint, /top2, which is designed for comparing phrases and identifying the top 2 closest phrases within a given list. The process involves the following steps:
