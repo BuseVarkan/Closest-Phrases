@@ -8,6 +8,9 @@
  pip3 install -r requirements.txt
 ```
  ## Usage
+ 
+ > NOTE: If `python3` command is not working for you, please try `python` instead.
+
  1. Run the FastAPI server using the following command:
  ```
 python3 -m uvicorn api:app --reload
@@ -26,7 +29,6 @@ python3 demo.py
    > Status Code: 400
    > Error: At least two phrases required for comparison.
    
- > NOTE: If `python3` command is not working for you, please try `python` instead.
    
 ## Functionality
 ### 1. API Endpoint: /top2
